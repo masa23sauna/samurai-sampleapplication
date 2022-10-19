@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_15_045618) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_19_061048) do
   create_table "accounts", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -21,6 +21,34 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_045618) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
+  end
+
+  create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", charset: "utf8mb4", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "areas", charset: "utf8mb4", force: :cascade do |t|
@@ -50,14 +78,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_045618) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "images", charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "shop_id", null: false
-    t.string "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["shop_id"], name: "index_images_on_shop_id"
-  end
-
   create_table "menus", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "shop_id", null: false
     t.bigint "genre_id", null: false
@@ -74,7 +94,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_045618) do
     t.decimal "longitude", precision: 9, scale: 6
     t.integer "popularity"
     t.string "name", null: false
-    t.string "thumbnail"
     t.string "city", null: false
     t.text "address", null: false
     t.text "catch_copy", null: false
@@ -106,9 +125,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_045618) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favorites", "shops"
   add_foreign_key "favorites", "users"
-  add_foreign_key "images", "shops"
   add_foreign_key "menus", "genres"
   add_foreign_key "menus", "shops"
   add_foreign_key "shops", "accounts"

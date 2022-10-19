@@ -5,4 +5,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  namespace :mypage do
+    resources :shops, only: %i(index)
+  end
 end

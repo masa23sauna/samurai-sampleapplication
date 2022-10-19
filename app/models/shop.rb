@@ -6,5 +6,5 @@ class Shop < ApplicationRecord
   has_many :genres, through: :menus
   has_many :favorites, dependent: :destroy
   has_many :users, through: :shops
-  has_many :images, dependent: :destroy
+  has_one_attached :image
 end
