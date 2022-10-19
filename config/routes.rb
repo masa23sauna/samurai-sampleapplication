@@ -8,4 +8,11 @@ Rails.application.routes.draw do
   namespace :mypage do
     resources :shops, only: %i(index)
   end
+  
+  namespace :shops do
+    resource :searches, only: %i(show)
+  end
+
+  resources :shops, only: %i(index show)
+
 end
