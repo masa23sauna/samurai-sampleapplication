@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root 'top#index'
   
-  devise_for :accounts
+  devise_for :accounts, controllers: { 
+    registrations: 'accounts/registrations',
+    sessions: 'accounts/sessions'
+  }
+  
   devise_for :users, controllers: { 
     registrations: 'users/registrations',
     sessions: 'users/sessions'
@@ -15,6 +19,10 @@ Rails.application.routes.draw do
   end
   
   resources :mypage, only: %i(index)
+  
+  namespace :companies do
+    resources :mypage, only: %I(index)
+  end
   
   namespace :shops do
     resource :searches, only: %i(show)
