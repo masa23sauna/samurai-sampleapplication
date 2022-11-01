@@ -1,0 +1,103 @@
+<%= form_with(model: [:companies, @shop]) do |form| %>
+  <div class="field row mb-3">
+    <%= form.label :name, "名前", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
+    <div class="col-sm-10 d-flex align-items-center">
+      <%= form.text_field :name, class: "form-control border-primary" %> 
+    </div>
+  </div>
+  <% if @shop.errors.include?(:name) %>
+    <p style="color: red;"><%= @shop.errors.full_messages_for(:name).first %>
+  <% end %>
+  
+  <div class="field row mb-3">
+    <%= form.label :area_id, "都道府県", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
+    <div class="col-sm-10 d-flex align-items-center">
+      <%= form.collection_select(:area_id, @areas, :id, :name, { prompt: "選択してください" }, { class: "form-control form-select border-primary" })%>
+    </div>
+  </div>
+  <% if @shop.errors.include?(:area_id) %>
+    <p style="color: red;"><%= @shop.errors.full_messages_for(:area_id).first %>
+  <% end %>
+  
+  <div class="field row mb-3">
+    <%= form.label :city, "区市町村", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
+    <div class="col-sm-10 d-flex align-items-center">
+      <%= form.text_field :city, class: "form-control border-primary" %>
+    </div>
+  </div>
+  <% if @shop.errors.include?(:city) %>
+    <p style="color: red;"><%= @shop.errors.full_messages_for(:city).first %>
+  <% end %>
+  
+  <div class="field row mb-3">
+    <%= form.label :address, "番地・マンション", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
+    <div class="col-sm-10 d-flex align-items-center">
+      <%= form.text_field :address, class: "form-control border-primary" %> 
+    </div>
+  </div>
+  <% if @shop.errors.include?(:address) %>
+    <p style="color: red;"><%= @shop.errors.full_messages_for(:address).first %>
+  <% end %>
+  
+  <div class="field row mb-3">
+    <%= form.label :telephone, "電話番号", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
+    <div class="col-sm-10 d-flex align-items-center">
+      <%= form.text_field :telephone, class: "form-control border-primary" %>
+    </div>
+  </div>
+  <% if @shop.errors.include?(:telephone) %>
+    <p style="color: red;"><%= @shop.errors.full_messages_for(:telephone).first %>
+  <% end %>
+  
+  <div class="field row mb-3">
+    <%= form.label :business_hours, "営業時間", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
+    <div class="col-sm-10 d-flex align-items-center">
+      <%= form.text_area :business_hours, class: "form-control border-primary" %>
+    </div>
+  </div>
+  <% if @shop.errors.include?(:business_hours) %>
+    <p style="color: red;"><%= @shop.errors.full_messages_for(:business_hours).first %>
+  <% end %>
+  
+  <div class="field row mb-3">
+    <%= form.label :category_id, "カテゴリー", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
+    <div class="col-sm-10 d-flex align-items-center">
+      <%= form.collection_select(:category_id, @categories, :id, :name, { prompt: "選択してください" }, { class: "form-control form-select border-primary" })%>
+    </div>
+  </div>
+  <% if @shop.errors.include?(:category_id) %>
+    <p style="color: red;"><%= @shop.errors.full_messages_for(:category_id).first %>
+  <% end %>
+  
+  <div class="field row mb-3">
+    <%= form.label :catch_copy, "キャッチコピー", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
+    <div class="col-sm-10 d-flex align-items-center">
+      <%= form.text_area :catch_copy, class: "form-control border-primary" %>
+    </div>
+  </div>
+  <% if @shop.errors.include?(:catch_copy) %>
+    <p style="color: red;"><%= @shop.errors.full_messages_for(:catch_copy).first %>
+  <% end %>
+  
+  <div class="field row mb-3">
+    <%= form.label :description, "説明文", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
+    <div class="col-sm-10 d-flex align-items-center">
+      <%= form.text_area :description, rows: 6, class: "form-control border-primary" %>
+    </div>
+  </div>
+  <% if @shop.errors.include?(:description) %>
+    <p style="color: red;"><%= @shop.errors.full_messages_for(:description).first %>
+  <% end %>
+  
+  <div class="field row mb-3">
+    <%= form.label :main_images, "メイン画像", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
+    <div class="col-sm-10 d-flex align-items-center">
+      <%= form.file_field :main_images, direct_upload: true, multiple: true, class: "form-control border-primary" %>
+    </div>
+  </div>
+  
+  <div class="actions text-center">
+    <%= form.submit "お店登録する", class: "btn btn-warning btn-lg" %>
+  </div>
+  
+<% end %>
