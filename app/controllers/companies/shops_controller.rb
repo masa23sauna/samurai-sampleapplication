@@ -26,7 +26,7 @@ module Companies
       end
       
       def shop_params
-        params.require(:shop).permit(:name, :city, :address, :catch_copy, :description, :telephone, :business_hours, :area_id, :category_id, main_images: [])
+        params.require(:shop).permit(:name, :city, :address, :catch_copy, :description, :telephone, :business_hours, :area_id, :category_id, main_images: [] )
       end
       
       def set_areas

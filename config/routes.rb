@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   
   namespace :companies do
     namespace :shops do
-      resources :images
+      resources :images, except: [:update, :edit ]
     end
   end
 end
