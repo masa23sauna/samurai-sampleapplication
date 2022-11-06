@@ -31,18 +31,9 @@ Rails.application.routes.draw do
   resources :shops, only: %i(index show)
   
   namespace :companies do
-    resources :shops
-  end
-  
-  namespace :companies do
-    namespace :shops do
-      resources :images, except: [:update, :edit ]
-    end
-  end
-  
-  namespace :companies do
-    namespace :shops do
-      resources :menus, except: :show 
+    resources :shops do
+      resources :images, only: %i(index new create), module: :shops
+      resources :menus, only: %i(index new create), module: :shops
     end
   end
   

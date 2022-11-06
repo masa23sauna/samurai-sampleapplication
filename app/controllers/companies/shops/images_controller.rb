@@ -1,34 +1,30 @@
 module Companies
-  module Shops
-    class ImagesController < ApplicationController
-      before_action :set_image, only: %i[ show destroy ]
+  class Shops::ImagesController < ApplicationController
+    before_action :set_shop
+    
+    def index
+      @images = @shop.images
+    end
+    
+    def new
+    end
       
-      def index
-        @images = Shop.all(image_params)
+    def create
+      if @shop.update(image_params)
+        redirect_to companies_shop_images_path, notice: "写真を投稿しました。"
+      else
+        render :new, status: :unprocessable_entity
       end
-      
-      def new
-        @image = Shop.new
-      end
-      
-      def create
-        @image = Shop.new(image_params)
-        if @image.save
-          redirect_to companies_shops_images_url, notice: "写真を投稿しました。"
-        else
-          render :new, status: :unprocessable_entity
-        end
-      end
+    end
           
       
-      private
-        def set_images
-          @image = Shop.find(params[:id])
-        end
-        
-        def image_params
-          params.require(:shop).permit(images: [] )
-        end
-    end
+    private
+      def set_shop
+        @shop = Shop.find(params[:shop_id])
+      end
+      
+      def image_params
+        params.require(:shop).permit(images: [] )
+      end
   end
 end
