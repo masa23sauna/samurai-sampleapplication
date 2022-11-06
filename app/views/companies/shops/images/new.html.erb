@@ -5,10 +5,12 @@
     
       <%= form_with model: @image, url: companies_shops_images_path do |form| %>
       
-      <div class="field row mb-3">
+      <div class="field row mb-5">
         <%= form.label :images, "写真", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
         <%= form.file_field :images, direct_upload: true, multiple: true, class: "border-primary" %>
       </div>
+      
+      <hr>
       
       <div class="actions text-center">
         <%= form.submit "写真を投稿", class: "btn btn-warning btn-lg" %>

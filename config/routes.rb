@@ -39,4 +39,11 @@ Rails.application.routes.draw do
       resources :images, except: [:update, :edit ]
     end
   end
+  
+  namespace :companies do
+    namespace :shops do
+      resources :menus, except: :show 
+    end
+  end
+  
 end
