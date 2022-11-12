@@ -1,2 +1,62 @@
-<h1>Companies#Shops#show</h1>
-<p>Find me in app/views/companies/mypage/index.html.erb</p>
+<%= render "layouts/shop" %>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width: 75%">
+  <!-- インジケータの設定 -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="スライド 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="スライド 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="スライド 3"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="スライド 4"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="スライド 5"></button>
+  </div>
+  <!-- スライドさせる画像の設定 -->
+  <div class="carousel-inner">
+    <% @main_images.each do |image| %>
+      <div class="carousel-item active">
+        <%= image_tag image, class: "d-block w-100 p-2", style: "height: 500px" %>
+      </div><!-- /.carousel-item -->
+    <% end %>
+  </div><!-- /.carousel-inner -->
+  <!-- スライドコントロールの設定 -->
+  <button type="button" class="carousel-control-prev" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">前へ</span>
+  </button>
+  <button type="button" class="carousel-control-next" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">次へ</span>
+  </button>
+</div><!-- /.carousel -->
+  
+  <div class="border-bottom" style="width: 75%">
+    <h3><%= @shop.catch_copy %></h3>
+    <p><%= @shop.description %></p>
+  </div>
+  
+  <div class="border-bottom" style="width: 75%">
+    <h3>投稿写真</h3>
+      <% if @shop.images.empty? %>
+        <p>投稿されていません。</p>
+      <% else %>
+        <div>
+          <%= @shop.images.first(10).each do |image| %>
+            <%= image_tag image %>
+          <% end %>
+        </div>
+      <% end %>
+    <%= link_to "もっとみる", companies_shop_images_path(@shop) %>
+  </div>
+  
+  <div style="width: 75%">
+    <h3>メニュー</h3>
+      <% if @menus.empty? %>
+        <p>投稿されていません。</p>
+      <% else %>
+        <div>
+          <%= @menus.first(10).each do |menu| %>
+            <%= menu %>
+          <% end %>
+        </div>
+      <% end %>
+    <%= link_to "もっとみる", companies_shop_menus_path(@shop) %>
+  </div>

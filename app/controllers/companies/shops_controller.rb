@@ -9,6 +9,10 @@ module Companies
     end
     
     def show
+      @category = @shop.category
+      @area = @shop.area
+      @main_images = @shop.main_images
+      @menus = @shop.menus
     end
     
     def create

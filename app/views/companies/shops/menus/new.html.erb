@@ -1,36 +1,34 @@
-<div class="container">
-  <div class="mx-auto center-block" style="width: 75%;" >
+<div class="mx-auto center-block" style="width: 75%;" >
+  
+  <h2 class="text-center mb-4">『店名』の写真投稿</h2>
+  
+    <%= form_with model: @menu, url: companies_shops_menus_path do |form| %>
+      <div class="field row mb-3">
+        <%= form.label :genre_id, "ジャンル", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
+        <div class="col-sm-3 d-flex align-items-center">
+          <%= form.collection_select(:genre_id, @genres, :id, :name, { prompt: "選択してください" }, { class: "form-control form-select border-primary" })%>
+        </div>
+      </div>
+        
+      <div class="field row mb-3">
+        <%= form.label :name, "名前", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
+        <div class="col-sm-6 d-flex align-items-center">
+          <%= form.text_field :name, class: "form-control border-primary" %>
+        </div>
+      </div>
+        
+      <div class="field row mb-5">
+        <%= form.label :description, "詳細", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
+        <div class="col-sm-6 d-flex align-items-center">
+          <%= form.text_area :description, rows: 4, class: "form-control border-primary" %>
+        </div>
+      </div>
+        
+      <hr>
+        
+      <div class="actions text-center">
+        <%= form.submit "メニューを登録", class: "btn btn-warning btn-lg" %>
+      </div>
+    <% end %>
     
-    <h2 class="text-center mb-4">『店名』の写真投稿</h2>
-    
-      <%= form_with model: @menu, url: companies_shops_menus_path do |form| %>
-        <div class="field row mb-3">
-          <%= form.label :genre_id, "ジャンル", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
-          <div class="col-sm-3 d-flex align-items-center">
-            <%= form.collection_select(:genre_id, @genres, :id, :name, { prompt: "選択してください" }, { class: "form-control form-select border-primary" })%>
-          </div>
-        </div>
-        
-        <div class="field row mb-3">
-          <%= form.label :name, "名前", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
-          <div class="col-sm-6 d-flex align-items-center">
-            <%= form.text_field :name, class: "form-control border-primary" %>
-          </div>
-        </div>
-        
-        <div class="field row mb-5">
-          <%= form.label :description, "詳細", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
-          <div class="col-sm-6 d-flex align-items-center">
-            <%= form.text_area :description, rows: 4, class: "form-control border-primary" %>
-          </div>
-        </div>
-        
-        <hr>
-        
-        <div class="actions text-center">
-          <%= form.submit "メニューを登録", class: "btn btn-warning btn-lg" %>
-        </div>
-      <% end %>
-    
-  </div>
 </div>

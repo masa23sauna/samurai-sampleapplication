@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-between mb-4">
+  <div>
+    <h1><%= @shop.name %></h1>
+    <div class="mt-5">
+      <a><i class="bi bi-bookmark-heart-fill" style="font-size: 1.75rem; color: #f08080;"></i><span class="ms-2">◎◎件</span></a>
+    </div>
+  </div>
+  <div class="align-self-end">
+    <div>
+      <div class="card card-body d-flex flex-row">
+        <button class="btn btn-outline-primary mx-1" style="width: 115px;">
+          <i class="bi bi-link"></i><span class="ms-1">共有</span>
+        </button>
+        <button class="btn btn-outline-danger mx-1" style="width: 115px;">
+          <i class="bi bi-bookmark-heart"></i><span class="ms-1">お気に入り</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row text-center border-top border-bottom border-2 border-dark">
+  <div class="col border-start border-end border-dark py-3">
+    <span class="fs-3">トップ</span>
+  </div>
+  <div class="col border-end border-dark py-3">
+    <span class="fs-3">メニュー</span>
+  </div>
+  <div class="col border-end border-dark py-3">
+    <span class="fs-3">写真</span>
+  </div>
+</div>
+
+<ul class="list-group float-end mt-2" style="min-width: 300px; width: 25%;">
+  <li class="list-group-item text-center">
+    <h3>店舗詳細</h3>
+  </li>
+  <li class="list-group-item">
+    <h4 class="text-center border-bottom">店名</h4>
+    <p><%= @shop.name %></p>
+  </li>
+  <li class="list-group-item">
+    <h5 class="text-center border-bottom">ジャンル</h5>
+    <p><%= @category.name %></p>
+  </li>
+  <li class="list-group-item">
+    <h5 class="text-center border-bottom">電話番号</h5>
+    <p><%= @shop.telephone %></p>
+  </li>
+  <li class="list-group-item">
+    <h5 class="text-center border-bottom">住所</h5>
+    <p><%= @area.name %><%= @shop.city %></p>
+    <p><%= @shop.address %></p>
+  </li>
+  <li class="list-group-item">
+    地図
+  </li>
+  <li class="list-group-item">
+    <h5 class="text-center border-bottom">営業時間</h5>
+    <p><%= @shop.business_hours %></p>
+  </li>
+</ul>
