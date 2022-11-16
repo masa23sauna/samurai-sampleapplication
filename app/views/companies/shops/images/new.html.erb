@@ -2,7 +2,7 @@
     
   <h2 class="text-center mb-4">『店名』の写真投稿</h2>
     
-    <%= form_with model: @image, url: companies_shops_images_path do |form| %>
+    <%= form_with model: @shop, url: companies_shop_images_path, method: :post do |form| %>
     
     <div class="field row mb-5">
       <%= form.label :images, "写真", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>

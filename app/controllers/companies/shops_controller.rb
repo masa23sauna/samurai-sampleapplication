@@ -13,6 +13,7 @@ module Companies
       @area = @shop.area
       @main_images = @shop.main_images
       @menus = @shop.menus
+      @images = @shop.images
     end
     
     def create

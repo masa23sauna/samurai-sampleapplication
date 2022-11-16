@@ -11,8 +11,8 @@
   </div>
   <!-- スライドさせる画像の設定 -->
   <div class="carousel-inner">
-    <% @main_images.each do |image| %>
-      <div class="carousel-item active">
+    <% @main_images.each_with_index do |image,idx| %>
+      <div class="carousel-item<%= idx == 1 ? " active" : "" %>">
         <%= image_tag image, class: "d-block w-100 p-2", style: "height: 500px" %>
       </div><!-- /.carousel-item -->
     <% end %>
@@ -35,14 +35,14 @@
   
   <div class="border-bottom" style="width: 75%">
     <h3>投稿写真</h3>
-      <% if @shop.images.empty? %>
-        <p>投稿されていません。</p>
-      <% else %>
+      <% if @images.attached? %>
         <div>
-          <%= @shop.images.first(10).each do |image| %>
-            <%= image_tag image %>
+          <%= @images.first(10).each do |image| %>
+            <%= image_tag image.variant( resize: "190x130!" ) %>
           <% end %>
         </div>
+      <% else %>
+        <p>投稿されていません</p>
       <% end %>
     <%= link_to "もっとみる", companies_shop_images_path(@shop) %>
   </div>

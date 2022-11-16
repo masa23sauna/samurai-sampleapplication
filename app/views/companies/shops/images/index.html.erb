@@ -1,1 +1,18 @@
-Companies#Shops#:shop_id#image#index
+<%= render "layouts/shop" %>
+
+<div class="p-2 mt-2" style="width: 75%;">
+  <h2 class="text-center mb-2"><%= @shop.name %>の写真</h2>
+    <div>
+      <% if @images.attached? %>
+        <% @images.each do |image| %>
+          <%= image_tag image.variant(resize: "220x160!"), class: "p-1" %> 
+        <% end %>
+      <% else %>
+        <p>投稿されていません。</p>
+      <% end %>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-center">
+      <%= link_to "写真を投稿する", new_companies_shop_image_path(@shop), class: "btn btn-success rounded-pill" %>
+    </div>
+</div>

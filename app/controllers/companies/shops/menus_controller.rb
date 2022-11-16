@@ -1,8 +1,12 @@
 module Companies
   class Shops::MenusController < ApplicationController
     before_action :set_shop
-    before_action :set_menu, only: %i[ edit update destroy ]
     before_action :set_genres, only: %i[ new create update ]
+    
+    def index
+      @category = @shop.category
+      @area = @shop.area
+    end
     
     def new
       @menu = Menu.new
@@ -10,8 +14,8 @@ module Companies
     
     def create
       @menu = Menu.new(menu_params)
-      if @menu.save
-        redirect_to companies_shops_menus_path(@menu), notice: "メニューを登録しました"
+      if @menu.save!
+        redirect_to companies_shop_menus_path, notice: "メニューを登録しました"
       else
         render :new, status: :unprocessable_entity
       end
@@ -21,9 +25,6 @@ module Companies
     
     def set_shop
       @shop = Shop.find(params[:shop_id])
-    
-    def set_menu
-      @menu = Menu.find(params[:id])
     end
       
     def menu_params
@@ -33,5 +34,6 @@ module Companies
     def set_genres
       @genres = Genre.all
     end
+    
   end
 end

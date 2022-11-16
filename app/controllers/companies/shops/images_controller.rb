@@ -4,6 +4,8 @@ module Companies
     
     def index
       @images = @shop.images
+      @category = @shop.category
+      @area = @shop.area
     end
     
     def new

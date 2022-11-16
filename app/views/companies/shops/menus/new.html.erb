@@ -2,13 +2,16 @@
   
   <h2 class="text-center mb-4">『店名』の写真投稿</h2>
   
-    <%= form_with model: @menu, url: companies_shops_menus_path do |form| %>
+    <%= form_with model: [@shop, @menu], url: companies_shop_menus_path do |form| %>
       <div class="field row mb-3">
         <%= form.label :genre_id, "ジャンル", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
         <div class="col-sm-3 d-flex align-items-center">
           <%= form.collection_select(:genre_id, @genres, :id, :name, { prompt: "選択してください" }, { class: "form-control form-select border-primary" })%>
         </div>
       </div>
+      <% if @menu.errors.include?(:genre_id) %>
+        <p style="color: red;"><%= @menu.errors.full_messages_for(:genre_id).first %>
+      <% end %>
         
       <div class="field row mb-3">
         <%= form.label :name, "名前", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
@@ -16,6 +19,9 @@
           <%= form.text_field :name, class: "form-control border-primary" %>
         </div>
       </div>
+      <% if @menu.errors.include?(:name) %>
+        <p style="color: red;"><%= @menu.errors.full_messages_for(:name).first %>
+      <% end %>
         
       <div class="field row mb-5">
         <%= form.label :description, "詳細", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
@@ -23,6 +29,9 @@
           <%= form.text_area :description, rows: 4, class: "form-control border-primary" %>
         </div>
       </div>
+      <% if @menu.errors.include?(:description) %>
+        <p style="color: red;"><%= @menu.errors.full_messages_for(:description).first %>
+      <% end %>
         
       <hr>
         
