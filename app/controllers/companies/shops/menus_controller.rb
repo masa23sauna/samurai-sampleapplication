@@ -1,11 +1,12 @@
 module Companies
   class Shops::MenusController < ApplicationController
-    before_action :set_shop
+    before_action :set_shop, only: %i[ index ]
     before_action :set_genres, only: %i[ new create update ]
     
     def index
       @category = @shop.category
       @area = @shop.area
+      @menus = Menu.where(shop_id:params[:shop_id])
     end
     
     def new
@@ -28,7 +29,7 @@ module Companies
     end
       
     def menu_params
-      params.require(:menu).permit(:name, :description, :genre_id, :shop_id )
+      params.require(:menu).permit(:name, :description, :genre_id ).merge(shop_id: params[:shop_id])
     end
       
     def set_genres

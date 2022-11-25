@@ -20,9 +20,7 @@ Rails.application.routes.draw do
   
   resources :mypage, only: %i(index)
   
-  namespace :companies do
-    resources :mypage, only: %I(index)
-  end
+  resources :companies, only: %I(show)
   
   namespace :shops do
     resource :searches, only: %i(show)

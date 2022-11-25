@@ -1,2 +1,25 @@
 <%= render "layouts/shop" %>
 
+<div class="p-2 mt-2" style="width: 75%;">
+  <h2 class="text-center mb-2"><%= @shop.name %>のメニュー</h2>
+  <% if @menus.empty? %>
+    <p>投稿されていません。</p>
+  <% else %>
+    <div>
+      <% @menus.each do |menu| %>
+        <div>
+          <h5><%= menu.name %>(<%= menu.genre_id %>)</h5>
+        </div>
+        <div>
+          <%= menu.description %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+
+<hr>
+  <div class="d-flex justify-content-center">
+    <%= link_to "メニューを登録する", new_companies_shop_menu_path(@shop), class: "btn btn-success rounded-pill" %>
+  </div>

@@ -37,7 +37,7 @@
     <h3>投稿写真</h3>
       <% if @images.attached? %>
         <div>
-          <%= @images.first(10).each do |image| %>
+          <% @images.first(10).each do |image| %>
             <%= image_tag image.variant( resize: "190x130!" ) %>
           <% end %>
         </div>
@@ -53,8 +53,8 @@
         <p>投稿されていません。</p>
       <% else %>
         <div>
-          <%= @menus.first(10).each do |menu| %>
-            <%= menu %>
+          <% @menus.first(10).each do |menu| %>
+            <%= menu.name %> <br>
           <% end %>
         </div>
       <% end %>

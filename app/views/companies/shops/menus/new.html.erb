@@ -2,7 +2,7 @@
   
   <h2 class="text-center mb-4">『店名』の写真投稿</h2>
   
-    <%= form_with model: [@shop, @menu], url: companies_shop_menus_path do |form| %>
+    <%= form_with model: @menu, url: companies_shop_menus_path, method: :post do |form| %>
       <div class="field row mb-3">
         <%= form.label :genre_id, "ジャンル", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
         <div class="col-sm-3 d-flex align-items-center">

@@ -27,6 +27,6 @@ class Accounts::SessionsController < Devise::SessionsController
     end
    
     def after_sign_in_path_for(resource)
-      companies_mypage_index_path
+      company_path(current_account)
     end
 end
