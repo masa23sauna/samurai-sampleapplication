@@ -8,7 +8,7 @@
     <div>
       <% @menus.each do |menu| %>
         <div>
-          <h5><%= menu.name %>(<%= menu.genre_id %>)</h5>
+          <h5><%= menu.name %>(<%= menu.genre.name %>)</h5>
         </div>
         <div>
           <%= menu.description %>

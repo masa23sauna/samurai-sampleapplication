@@ -1,5 +1,5 @@
 module Companies
-  class ShopsController < ApplicationController
+  class ShopsController < AuthController
     before_action :set_shop, only: %i[ show edit update destroy ]
     before_action :set_areas, only: %i[ new create update ]
     before_action :set_categories, only: %i[ new create update ]
@@ -18,6 +18,7 @@ module Companies
     
     def create
       @shop = Shop.new(shop_params)
+      @shop.account_id = current_account.id
       if @shop.save
         redirect_to companies_shop_url(@shop), notice: "お店を登録しました。"
       else
@@ -31,7 +32,7 @@ module Companies
       end
       
       def shop_params
-        params.require(:shop).permit(:name, :city, :address, :catch_copy, :description, :telephone, :business_hours, :area_id, :category_id, main_images: [] )
+        params.require(:shop).permit(:name, :city, :address, :catch_copy, :description, :telephone, :business_hours, :area_id, :category_id, main_images: [] ).merge(account_id: current_account.id)
       end
       
       def set_areas

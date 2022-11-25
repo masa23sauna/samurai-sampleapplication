@@ -1,5 +1,5 @@
 module Companies
-  class Shops::ImagesController < ApplicationController
+  class Shops::ImagesController < AuthController
     before_action :set_shop
     
     def index

@@ -1,5 +1,8 @@
 class CompaniesController < ApplicationController
+  before_action :authenticate_account!
+  
   def show
+    @shops = Shop.where(account_id: current_account.id).includes(:account).order("created_at DESC")
   end
   
   private 

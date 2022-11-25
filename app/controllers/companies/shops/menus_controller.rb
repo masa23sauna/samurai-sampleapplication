@@ -1,5 +1,5 @@
 module Companies
-  class Shops::MenusController < ApplicationController
+  class Shops::MenusController < AuthController
     before_action :set_shop, only: %i[ index ]
     before_action :set_genres, only: %i[ new create update ]
     
