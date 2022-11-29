@@ -24,6 +24,7 @@ gem 'bootstrap', '~> 5.2.2'
 gem 'nested_form_fields'
 gem 'jquery-rails'
 gem 'pry-rails'
+gem 'kaminari'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
