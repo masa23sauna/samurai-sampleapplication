@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="mb-3">
+    <h2 class="text-center">お店検索</h2>
+  </div>
+  <div class="mx-auto" style="width: 50%;">
+    <%= form_with url: shops_path, method: :get do |f| %>
+      <%= f.text_field :keyword, placeholder: "キーワード", class: "form-control" %>
+        <div class="searches_wrapper">
+          <p>
+            <button type="button" class="btn btn-primary mt-3" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              詳細検索
+            </button>
+          </p>
+        <div class="collapse" id="collapseExample">
+          <div class="searches card card-body">
+            <%= f.label :prefecture, "都道府県" %>
+            <%= f.collection_select(:prefecture, Area.order(:id), :id, :name, { prompt: "選択してください" }, { class: "form-control form-select border-primary" }) %>
+            <%= f.label :category, "カテゴリー" %>
+            <%= f.collection_select(:category, Category.order(:id), :id, :name, { prompt: "選択してください" }, { class: "form-control form-select border-primary" }) %>
+          </div>
+        </div>
+      </div>
+      <div class="actions text-center mt-4">
+        <%= f.submit "検索", class: "btn btn-warning btn-lg" %>
+      </div>
+    <% end %>
+  </div>
+</div>

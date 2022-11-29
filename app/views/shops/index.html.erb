@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-3 border border-2 p-2 bg-white" >
+    <%= form_with url: shops_path, method: :get do |f| %>
+      <%= f.text_field :keyword, placeholder: "キーワード", class: "form-control border-2" %>
+      <div class="searches_wrapper">
+        <p>詳細検索</p>
+        <div class="searches">
+          <%= f.label :prefecture, "都道府県" %>
+          <%= f.collection_select(:prefecture, Area.order(:id), :id, :name, { prompt: "選択してください" }, { class: "form-control form-select border-primary" }) %>
+          <%= f.label :category, "カテゴリー" %>
+          <%= f.collection_select(:category, Category.order(:id), :id, :name, { prompt: "選択してください" }, { class: "form-control form-select border-primary" }) %>
+        </div>
+      </div>
+      <div class="actions text-center mt-4">
+        <%= f.submit "検索", class: "btn btn-warning btn-lg" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-9">
+    <% if @shops.present? %>
+      <% @shops.each do |shop| %>
+        <%= link_to shop_path(shop), class: "link-dark", style: "text-decoration: none;" do %>
+          <div class="card mb-3" >
+            <div class="row g-0">
+              <div class="col-md-2">
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                  <!-- スライドさせる画像の設定 -->
+                  <div class="carousel-inner">
+                    <% shop.main_images.each_with_index do |image,idx| %>
+                      <div class="carousel-item<%= idx == 1 ? " active" : "" %>">
+                        <%= image_tag image, class: "img-fluid rounded-start" %>
+                      </div><!-- /.carousel-item -->
+                    <% end %>
+                  </div><!-- /.carousel-inner -->
+                </div><!-- /.carousel -->
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title"><%= shop.name %></h5>
+                  <p class="card-text"><%= shop.area.name %><%= shop.city %>／<%= shop.category.name %></p>
+                  <hr>
+                  <p class="card-text"><%= shop.catch_copy %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% else %>
+     <p>みつかりませんでした。</p>
+    <% end %>
+  </div>
+</div>
