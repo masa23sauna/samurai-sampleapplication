@@ -26,7 +26,10 @@ Rails.application.routes.draw do
     resources :searches, only: :index 
   end
 
-  resources :shops, only: %i(index show)
+  resources :shops, only: %i(index show) do
+    resources :images, only: %i(index), module: :shops
+    resources :menus, only: %I(index), module: :shops
+  end
   
   namespace :companies do
     resources :shops do
