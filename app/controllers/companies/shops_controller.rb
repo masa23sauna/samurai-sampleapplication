@@ -1,8 +1,8 @@
 module Companies
   class ShopsController < AuthController
     before_action :set_shop, only: %i[ show edit update destroy ]
-    before_action :set_areas, only: %i[ new create update ]
-    before_action :set_categories, only: %i[ new create update ]
+    before_action :set_areas, only: %i[ new create edit update ]
+    before_action :set_categories, only: %i[ new create edit update ]
     
     def new
       @shop = Shop.new
@@ -16,6 +16,9 @@ module Companies
       @images = @shop.images
     end
     
+    def edit
+    end
+    
     def create
       @shop = Shop.new(shop_params)
       @shop.account_id = current_account.id
@@ -23,6 +26,14 @@ module Companies
         redirect_to companies_shop_url(@shop), notice: "お店を登録しました。"
       else
         render :new, status: :unprocessable_entity
+      end
+    end
+    
+    def update
+      if @shop.update(shop_params)
+        redirect_to companies_shop_url(@shop), notice: "お店を更新しました。"
+      else
+        render :edit, status: :unprocessable_entity
       end
     end
     
