@@ -1,0 +1,45 @@
+<div class="p-4 p-sm-5 my-4 rounded">
+  <h3 class="display-4"><%= @user.name %>さんのマイページ</h3>
+  <%= form_with url: destroy_user_session_path, method: :delete do |f| %>
+    <%= f.submit "ログアウト", class:"btn btn-outline-secondary btn-sm mt-2" %>
+  <% end %>
+</div>
+
+<% if @favorites.present? %>
+  <%= link_to "お店を検索する", shops_searches_path, class: "btn btn-primary rounded-0 ms-2 mb-4" %>
+    <% @favorites.each do |favorite| %>
+    <% shop = favorite.shop %>
+      <%= link_to shop_path(shop), class: "link-dark", style: "text-decoration: none;" do %>
+        <div class="card mb-3" >
+          <div class="row g-0">
+            <div class="col-md-2">
+              <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <!-- スライドさせる画像の設定 -->
+                <div class="carousel-inner">
+                  <% shop.main_images.each_with_index do |image,idx| %>
+                    <div class="carousel-item<%= idx == 1 ? " active" : "" %>">
+                      <%= image_tag image, class: "img-fluid rounded-start" %>
+                    </div><!-- /.carousel-item -->
+                  <% end %>
+                </div><!-- /.carousel-inner -->
+              </div><!-- /.carousel -->
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><%= shop.name %></h5>
+                <p class="card-text"><%= shop.area.name %><%= shop.city %>／<%= shop.category.name %></p>
+                <hr>
+                <p class="card-text"><%= shop.catch_copy %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+<% else %>
+  <div class="center-block d-flex flex-column align-items-center">
+    <h2>まだお店をお気に入りしていません。</h2>
+    <p>お店を探しましょう！</p>
+    <%= link_to "お店を検索する", shops_searches_path, class: "btn btn-primary rounded-0 btn-lg" %>
+  </div>
+<% end %>

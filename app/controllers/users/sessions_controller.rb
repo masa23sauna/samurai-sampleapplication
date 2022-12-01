@@ -27,6 +27,6 @@ class Users::SessionsController < Devise::SessionsController
    end
    
    def after_sign_in_path_for(resource)
-     mypage_index_path
+     user_path(current_user.id)
    end
 end

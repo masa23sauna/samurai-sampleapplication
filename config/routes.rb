@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
+  
+  resources :users, only: [:show]
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -17,8 +20,6 @@ Rails.application.routes.draw do
   namespace :mypage do
     resources :shops, only: %i(index)
   end
-  
-  resources :mypage, only: %i(index)
   
   resources :companies, only: %I(show)
   
