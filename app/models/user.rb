@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
     has_many :shops, through: :favorites
     
+  def already_liked?(shop)
+    self.favorites.exists?(shop_id: shop.id)
+  end
+  
 end

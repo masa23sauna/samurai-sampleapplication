@@ -2,7 +2,7 @@
   <div>
     <h1><%= @shop.name %></h1>
     <div class="mt-5">
-      <a><i class="bi bi-bookmark-heart-fill" style="font-size: 1.75rem; color: #f08080;"></i><span class="ms-2">◎◎件</span></a>
+      <p><i class="bi bi-bookmark-heart-fill me-2" style="font-size: 1.75rem; color: #f08080;"></i><%= @shop.favorites.count %>件</p>
     </div>
   </div>
   <div class="align-self-end">
@@ -11,9 +11,15 @@
         <button type="button" class="btn btn-outline-primary mx-1" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="上に出るポップオーバー" style="width: 115px;">
           <i class="bi bi-link"></i><span class="ms-1">共有</span>
         </button>
-        <button class="btn btn-outline-danger mx-1" style="width: 115px;">
-          <i class="bi bi-bookmark-heart"></i><span class="ms-1">お気に入り</span>
-        </button>
+        <% if current_user.already_liked?(@shop) %>
+          <%= button_to shop_favorite_path(@shop), method: :delete, class: "btn btn-outline-danger mx-1" do %>
+            <i class="bi bi-bookmark-heart-fill"></i><span class="ms-1">お気に入り解除</span>
+          <% end %>
+        <% else %>
+          <%= button_to shop_favorites_path(@shop), method: :post, class: "btn btn-outline-danger mx-1" do %>
+            <i class="bi bi-bookmark-heart"></i><span class="ms-1">お気に入り</span>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
