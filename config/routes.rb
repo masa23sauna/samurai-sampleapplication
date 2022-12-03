@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
 
   resources :shops, only: %i(index show) do
-    resources :images, only: %i(index), module: :shops
+    resources :images, only: %i(index), module: :shops 
     resources :menus, only: %i(index), module: :shops
     resources :favorites, only: %i(create destroy)
   end

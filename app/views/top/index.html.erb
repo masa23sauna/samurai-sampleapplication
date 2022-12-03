@@ -1,2 +1,11 @@
-<h1>Top#index</h1>
-<p>Find me in app/views/top/index.html.erb</p>
+<div class="p-4 p-sm-5 my-4 rounded border">
+  <h1 class="display-4">飯ログとは</h1>
+    <p class="lead">これは単純なヒーローユニット、注目のコンテンツや情報に特別な注意を喚起するためのシンプルなジャンボトロンスタイルのコンポーネントです。</p>
+    <hr class="my-4">
+    <p>より大きなコンテナの範囲内でコンテンツに空間をあけるため、文字の体裁と空白ユーティリティクラスを使用している。</p>
+</div>
+
+<div class="d-flex justify-content-between">
+  <%= link_to "お店検索", shops_searches_path, class:"btn btn-primary rounded-0 fs-2", style:"width: 25%; height: 75px;" %>
+  <%= link_to "お店登録", new_companies_shop_path, class:"btn btn-warning rounded-0 fs-2", style:"width: 25%; height: 75px;" %>
+</div>
