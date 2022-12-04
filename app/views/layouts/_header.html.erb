@@ -10,14 +10,36 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">お店検索</a>
             </li>
-              <a class="nav-link disabled">|</a>
+              <p class="nav-link disabled">|</p>
             <li class="nav-item">
               <%= link_to "お店登録", new_companies_shop_path, class: "nav-link" %>
             </li>
-              <a class="nav-link disabled">|</a>
-            <li class="nav-item">
-              <a class="nav-link disabled">マイページ</a>
-            </li>
+              <p class="nav-link disabled">|</p>
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "マイページ", "/users/#{current_user.id}", class: "nav-link" %>
+              </li>
+                <p class="nav-link disabled">|</p>
+              <li class="nav-item">
+                <%= form_with url: destroy_user_session_path, method: :delete do |f| %>
+                  <%= f.submit "ログアウト", class:"nav-link bg-transparent border border-0" %>
+                <% end %>
+              </li>
+            <% elsif account_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "マイページ", "/company/#{current_account.id}", class: "nav-link" %>
+              </li>
+                <p class="nav-link disabled">|</p>
+              <li class="nav-item">
+                <%= form_with url: destroy_account_session_path, method: :delete do |f| %>
+                  <%= f.submit "ログアウト", class:"nav-link bg-transparent border border-0" %>
+                <% end %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
