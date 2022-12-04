@@ -18,7 +18,6 @@ module Companies
         render :new, status: :unprocessable_entity
       end
     end
-          
       
     private
       def set_shop

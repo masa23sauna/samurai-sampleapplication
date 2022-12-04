@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   resources :shops, only: %i(index show) do
     resources :images, only: %i(index), module: :shops 
     resources :menus, only: %i(index), module: :shops
-    resources :favorites, only: %i(create destroy)
+    resource :favorites, only: %i(create destroy)
   end
   
   namespace :companies do

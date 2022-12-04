@@ -23,8 +23,9 @@ class Shop < ApplicationRecord
   
   def self.search(keyword = nil, category_id = nil, area_id = nil)
     shops = Shop.order(created_at: :desc)
-    shops = shops.where("name LIKE ? OR catch_copy LIKE ? OR description LIKE ?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%") if keyword.present?
+    shops = shops.where('name LIKE :keyword OR catch_copy LIKE :keyword OR description LIKE :keyword', keyword: "%#{keyword}%" ) if keyword.present?
     shops = shops.where(category_id: category_id) if category_id.present?
     shops = shops.where(area_id: area_id) if area_id.present?
+    shops
   end
 end
