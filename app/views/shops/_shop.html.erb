@@ -11,7 +11,7 @@
         <button type="button" class="btn btn-outline-primary mx-1" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="上に出るポップオーバー" style="width: 115px;">
           <i class="bi bi-link"></i><span class="ms-1">共有</span>
         </button>
-        <% if current_user.already_liked?(@shop) %>
+        <% if user_signed_in? and current_user.already_liked?(@shop) %>
           <%= button_to shop_favorite_path(@shop), method: :delete, class: "btn btn-outline-danger mx-1" do %>
             <i class="bi bi-bookmark-heart-fill"></i><span class="ms-1">お気に入り解除</span>
           <% end %>

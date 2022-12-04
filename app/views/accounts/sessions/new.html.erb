@@ -1,5 +1,5 @@
-<div class="mx-auto h-25 w-50 border border-warning" style="background-color: #ffffff">
-  <h2 class="ms-2">ログイン</h2>
+<div class="mx-auto py-2 h-25 w-50 border border-warning" style="background-color: #ffffff">
+  <h2 class="ms-2">お店アカウントログイン</h2>
   
   <hr class="mx-2">
 
@@ -31,6 +31,12 @@
   <hr class="mx-2">
 
   <h3 class="ms-2">新規アカウントはこちら</h3>
-  <%= render "accounts/shared/links" %>
+    <%= render "accounts/shared/links" %>
+    
+  <hr class="mx-2">
+  
+  <h3 class="ms-2">
+    ユーザーの方は<%= link_to "こちら", new_user_session_path %>から
+  </h3>
 </div>
 

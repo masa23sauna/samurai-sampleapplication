@@ -1,6 +1,6 @@
 class ShopsController < ApplicationController
   def index
-    @shops = Shop.search(params[:keyword], params[:category], params[:prefecture]).page(params[:page])
+    @shops = Shop.search(params[:keyword], params[:category], params[:prefecture])
   end
   
   def show
