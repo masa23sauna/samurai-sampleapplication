@@ -1,10 +1,10 @@
 <footer>
-  <nav class="navbar navbar-expand-md fixed-bottom" style="background-color: #f0e68c;">
+  <nav class="navbar navbar-expand-md border-top border-2 border-dark">
   <div class="navbar-brand mx-auto">
-    <%= link_to root_path do %>
+    <%= link_to root_path, class: "navbar-brand ms-2 fs-3 fw-bolder" do %>
       <%= image_tag "/images/icon.png", size: "50x50" %>
+      <span style="color: #ffa500;">飯ログ</span>
     <% end %>
-    <a class="navbar-brand ms-2 fs-3 fw-bolder" href="#">飯ログ</a>
   </div>
 </nav>
 </footer>
