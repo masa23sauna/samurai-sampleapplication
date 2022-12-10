@@ -43,7 +43,7 @@ module Companies
       end
       
       def shop_params
-        params.require(:shop).permit(:name, :city, :address, :catch_copy, :description, :telephone, :business_hours, :area_id, :category_id, main_images: [] ).merge(account_id: current_account.id)
+        params.require(:shop).permit(:name, :city, :address, :catch_copy, :description, :telephone, :business_hours, :area_id, :category_id, :latitude, :longitude ,main_images: [] ).merge(account_id: current_account.id)
       end
       
       def set_areas

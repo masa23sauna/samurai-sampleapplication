@@ -28,4 +28,7 @@ class Shop < ApplicationRecord
     shops = shops.where(area_id: area_id) if area_id.present?
     shops
   end
+  
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 end

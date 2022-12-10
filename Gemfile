@@ -25,6 +25,9 @@ gem 'nested_form_fields'
 gem 'jquery-rails'
 gem 'pry-rails'
 gem 'kaminari'
+gem 'dotenv-rails'
+gem 'geocoder'
+gem 'dotenv'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
