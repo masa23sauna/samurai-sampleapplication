@@ -2,13 +2,14 @@
   <div class="col-3 border border-2 p-2 bg-white" >
     <%= form_with url: shops_path, method: :get do |f| %>
       <%= f.text_field :keyword, placeholder: "キーワード", class: "form-control border-2" %>
+      <br>
       <div class="searches_wrapper">
-        <p>詳細検索</p>
+        <h6>詳細検索</h6>
         <div class="searches">
           <%= f.label :prefecture, "都道府県" %>
-          <%= f.collection_select(:prefecture, Area.order(:id), :id, :name, { prompt: "選択してください" }, { class: "form-control form-select border-primary" }) %>
+          <%= f.collection_select(:prefecture, Area.order(:id), :id, :name, { prompt: "選択してください" }, { class: "form-control form-select border-warning" }) %>
           <%= f.label :category, "カテゴリー" %>
-          <%= f.collection_select(:category, Category.order(:id), :id, :name, { prompt: "選択してください" }, { class: "form-control form-select border-primary" }) %>
+          <%= f.collection_select(:category, Category.order(:id), :id, :name, { prompt: "選択してください" }, { class: "form-control form-select border-warning" }) %>
         </div>
       </div>
       <div class="actions text-center mt-4">

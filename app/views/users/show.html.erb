@@ -1,7 +1,7 @@
 <div class="p-4 p-sm-5 my-4 rounded">
   <h3 class="display-4"><%= @user.name %>さんのマイページ</h3>
   <%= form_with url: destroy_user_session_path, method: :delete do |f| %>
-    <%= f.submit "ログアウト", class:"btn btn-outline-secondary btn-sm mt-2" %>
+    <%= f.submit "ログアウト", class:"btn btn-outline-warning btn-sm mt-2" %>
   <% end %>
 </div>
 

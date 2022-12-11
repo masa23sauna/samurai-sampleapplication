@@ -8,16 +8,16 @@
         <div class="accordion" id="accordionExample">
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
-              <button type="button" class="accordion-button collapsed btn btn-primary mt-3" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <button type="button" class="accordion-button collapsed btn btn-warning mt-3" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                 詳細検索
               </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="searches accordion-body">
                 <%= f.label :prefecture, "都道府県" %>
-                <%= f.collection_select(:prefecture, Area.order(:id), :id, :name, { prompt: "選択してください" }, { class: "form-control form-select border-primary" }) %>
+                <%= f.collection_select(:prefecture, Area.order(:id), :id, :name, { prompt: "選択してください" }, { class: "form-control form-select border-warning" }) %>
                 <%= f.label :category, "カテゴリー" %>
-                <%= f.collection_select(:category, Category.order(:id), :id, :name, { prompt: "選択してください" }, { class: "form-control form-select border-primary" }) %>
+                <%= f.collection_select(:category, Category.order(:id), :id, :name, { prompt: "選択してください" }, { class: "form-control form-select border-warning" }) %>
               </div>
             </div>
           </div>

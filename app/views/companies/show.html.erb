@@ -1,7 +1,7 @@
 <div class="p-4 p-sm-5 my-4 rounded">
   <h3 class="display-4">お店管理</h3>
   <%= form_with url: destroy_account_session_path, method: :delete do |f| %>
-    <%= f.submit "ログアウト", class:"btn btn-outline-secondary btn-sm mt-2" %>
+    <%= f.submit "ログアウト", class:"btn btn-outline-warning btn-sm mt-2" %>
   <% end %>
 </div>
 
@@ -9,10 +9,10 @@
   <div class="center-block d-flex flex-column align-items-center">
     <h2>まだお店が登録されていません。</h2>
     <p>お店を登録しましょう！</p>
-    <%= link_to "お店を登録する", new_companies_shop_path, class: "btn btn-success rounded-0 btn-lg" %>
+    <%= link_to "お店を登録する", new_companies_shop_path, class: "btn btn-primary rounded-0 btn-lg" %>
   </div>
 <% else %>
-  <%= link_to "お店を登録する", new_companies_shop_path, class: "btn btn-success rounded-0 ms-2 mb-4" %>
+  <%= link_to "お店を登録する", new_companies_shop_path, class: "btn btn-primary rounded-0 ms-2 mb-4" %>
   <% @shops.each do |shop| %>
     <%= link_to companies_shop_path(shop), class: "link-dark", style: "text-decoration: none;" do %>
       <div class="card mb-3" >
