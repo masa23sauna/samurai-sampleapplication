@@ -28,6 +28,7 @@ gem 'kaminari'
 gem 'dotenv-rails'
 gem 'geocoder'
 gem 'dotenv'
+gem 'nokogiri', ">= 1.10.4"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

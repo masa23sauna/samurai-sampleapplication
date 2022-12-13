@@ -306,6 +306,7 @@ DEPENDENCIES
   mini_magick
   mysql2 (~> 0.5)
   nested_form_fields
+  nokogiri (>= 1.10.4)
   pry-rails
   puma (~> 5.0)
   rails (~> 7.0.4)
