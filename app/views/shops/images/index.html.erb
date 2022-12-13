@@ -1,14 +1,22 @@
-<%= render "shops/shop" %>
+<%= render "shops/shop_header" %>
 
-<div class="p-2 mt-2" style="width: 75%;">
-  <h2 class="text-center mb-2"><%= @shop.name %>の写真</h2>
-    <div>
-      <% if @images.attached? %>
-        <% @images.each do |image| %>
-          <%= image_tag image.variant(resize: "220x160!"), class: "p-1" %> 
-        <% end %>
-      <% else %>
-        <p>投稿されていません。</p>
-      <% end %>
+<div class="row p-1">
+  <div class="col-9">
+    <div class="p-2 mt-2" style="width: 75%;">
+      <h2 class="text-center mb-2"><%= @shop.name %>の写真</h2>
+        <div>
+          <% if @images.attached? %>
+            <% @images.each do |image| %>
+              <%= image_tag image.variant(resize: "220x160!"), class: "p-1" %> 
+            <% end %>
+          <% else %>
+            <p>投稿されていません。</p>
+          <% end %>
+        </div>
     </div>
+  </div>
+  
+  <dvi class="col-3">
+    <%= render "shops/shop_side" %>
+  </dvi>
 </div>

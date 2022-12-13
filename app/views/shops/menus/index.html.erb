@@ -1,19 +1,27 @@
-<%= render "shops/shop" %>
+<%= render "shops/shop_header" %>
 
-<div class="p-2 mt-2" style="width: 75%;">
-  <h2 class="text-center mb-2"><%= @shop.name %>のメニュー</h2>
-  <% if @menus.empty? %>
-    <p>投稿されていません。</p>
-  <% else %>
-    <div>
-      <% @menus.each do |menu| %>
-        <div>
-          <h5><%= menu.name %>(<%= menu.genre.name %>)</h5>
-        </div>
-        <div>
-          <%= menu.description %>
-        </div>
-      <% end %>
+<div class="row p-1">
+  <div class="col-9">
+    <div class="p-2 mt-2" style="width: 75%;">
+      <h2 class="text-center mb-2"><%= @shop.name %>のメニュー</h2>
+        <% if @menus.empty? %>
+          <p>投稿されていません。</p>
+        <% else %>
+          <div>
+            <% @menus.each do |menu| %>
+              <div>
+                <h5><%= menu.name %>(<%= menu.genre.name %>)</h5>
+              </div>
+              <div>
+                <%= menu.description %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
     </div>
-  <% end %>
+  </div>
+  
+  <div class="col-3">
+    <%= render "shops/shop_side" %>
+  </div>
 </div>

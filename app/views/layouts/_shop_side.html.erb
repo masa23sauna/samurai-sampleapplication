@@ -1,0 +1,31 @@
+<div class="w-auto">
+  <ul class="list-group mt-2 border border-warning">
+    <li class="list-group-item text-center">
+      <h3>店舗詳細</h3>
+    </li>
+    <li class="list-group-item">  
+      <h4 class="text-center border-bottom">店名</h4>
+      <p><%= @shop.name %></p>
+    </li> 
+    <li class="list-group-item">
+      <h4 class="text-center border-bottom">カテゴリー</h4>
+      <p><%= @category.name %></p>
+    </li>
+    <li class="list-group-item">
+      <h4 class="text-center border-bottom">電話番号</h4>
+      <p><%= @shop.telephone %></p>
+    </li>
+    <li class="list-group-item">
+      <h4 class="text-center border-bottom">住所</h4>
+      <p><%= @area.name %><%= @shop.city %></p>
+      <p><%= @shop.address %></p>
+    </li>
+    <li class="list-group-item">
+      地図
+    </li>
+    <li class="list-group-item">
+      <h4 class="text-center border-bottom">営業時間</h4>
+      <p><%= @shop.business_hours %></p>
+    </li>
+  </ul>
+</div>
