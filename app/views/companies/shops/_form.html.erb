@@ -89,13 +89,22 @@
     <p style="color: red;"><%= @shop.errors.full_messages_for(:description).first %>
   <% end %>
   
-  <div class="field row mb-3">
-    <%= form.label :main_images, "メイン画像", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
-    <div class="col-sm-10 d-flex align-items-center">
-      <%= form.file_field :main_images, direct_upload: true, multiple: true, class: "form-control border-primary", onchange: "loadImage(this);" %>
+  <div data-controller="select-images" class="flex flex-col md:flex-row pb-4">
+    <div class="relative flex items-center"
+         data-action="click->select-images#fileCheck"
+    >
+      <%= form.label :main_images, 'メイン画像', class: "absolute z-50 top-0 left-0 w-full h-full bg-transparent text-transparent pointer" %>
+      <%= form.file_field :main_images, "data-select-images-target": "file", direct_upload: true, multiple: true, class: "hidden" %>
+        <% if @shop.main_images.attached? %>
+          <% @shop.main_images.each do |image| %>
+            <%= image_tag image, "data-select-images-target": "image", class: 'ablolute z-40 top-0 left-0 w-[48px] object-cover' %>
+          <% end %>
+        <% else %>
+          <%= image_tag "/images/image.png", "data-select-images-target": "image", class: "ablolute z-40 top-0 left-0 w-[48px] opacity-50" %>
+        <% end %>
     </div>
   </div>
-  
+
   <div class="actions text-center">
     <%= form.submit "お店登録する", class: "btn btn-warning btn-lg" %>
   </div>
