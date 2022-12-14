@@ -6,9 +6,7 @@ class Shop < ApplicationRecord
   has_many :genres, through: :menus
   has_many :favorites, dependent: :destroy
   has_many :users, through: :shops
-  has_many_attached :main_images do |attachable|
-    attachable.variant :thumb, resize_to_limit: [100, 100]
-  end
+  has_many_attached :main_images
   has_many_attached :images
   
   validates :name, presence: true
@@ -28,7 +26,4 @@ class Shop < ApplicationRecord
     shops = shops.where(area_id: area_id) if area_id.present?
     shops
   end
-  
-  geocoded_by :address
-  after_validation :geocode, if: :address_changed?
 end

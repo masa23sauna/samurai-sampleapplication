@@ -92,7 +92,7 @@
   <div class="field row mb-3">
     <%= form.label :main_images, "メイン画像", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
     <div class="col-sm-10 d-flex align-items-center">
-      <%= form.file_field :main_images, direct_upload: true, multiple: true, class: "form-control border-primary" %>
+      <%= form.file_field :main_images, direct_upload: true, multiple: true, class: "form-control border-primary", onchange: "loadImage(this);" %>
     </div>
   </div>
   

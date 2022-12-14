@@ -18,5 +18,7 @@ module Meshilog
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
     
     config.active_storage.variant_processor = :mini_magick
+    
+    config.active_storage.replace_on_assign_to_many = false
   end
 end
