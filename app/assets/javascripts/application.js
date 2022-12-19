@@ -1,3 +1,3 @@
-//= require nested_form_field
+//= require nested_form_fields
 //= require jquery3
 //= require jquery_ujs
