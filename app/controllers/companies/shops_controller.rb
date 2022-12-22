@@ -30,6 +30,13 @@ module Companies
     end
     
     def update
+      if params[:shop][:image_ids]
+        params[:shop][:image_ids].each do |image_id|
+          main_images = @shop.main_images.find(image_id)
+          main_images.purge
+        end
+      end
+
       if @shop.update(shop_params)
         redirect_to companies_shop_url(@shop), notice: "お店を更新しました。"
       else

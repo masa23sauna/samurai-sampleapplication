@@ -1,13 +1,30 @@
 <div class="mx-auto center-block" style="width: 75%;">
     
-  <h2 class="text-center mb-4">『店名』の写真投稿</h2>
+  <h2 class="text-center mb-4"><%= @shop.name %>の写真投稿</h2>
     
     <%= form_with model: @shop, url: companies_shop_images_path, method: :post do |form| %>
     
-    <div class="field row mb-5">
-      <%= form.label :images, "写真", class: "col-sm-2 col-form-label fs-5", style: "display: block" %>
-      <%= form.file_field :images, direct_upload: true, multiple: true, class: "border-primary" %>
-    </div>
+      <div data-controller="select-images" class="flex flex-col md:flex-row pb-4">
+        <div class="relative flex items-center"
+           data-action="click->select-images#fileCheck"
+        >
+          <%= form.label :images, '画像', class: "absolute z-50 top-0 left-0 w-full h-full bg-transparent text-transparent pointer" %>
+          <%= form.file_field :images, "data-select-images-target": "file", direct_upload: true, multiple: true, class: "hidden" %>
+          <div class="mt-4">
+            <% if @shop.images.attached? %>
+              <p>削除する画像をチェックしてください。</p>
+              <% @shop.images.each do |image| %>
+                <%= form.check_box :image_ids, { multiple: true }, image.id, false %>
+                <label for="shop_image_ids_<%= image.id %>" > 
+                  <%= image_tag image.variant( resize: "190x130!" ) , "data-select-images-target": "image" %>
+                </label>
+              <% end %>
+            <% else %>
+              <%= image_tag "/images/image.png", "data-select-images-target": "image", class: "ablolute z-40 top-0 left-0 w-[48px] opacity-50" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
       
     <hr>
       

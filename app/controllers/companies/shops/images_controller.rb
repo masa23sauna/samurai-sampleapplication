@@ -12,6 +12,13 @@ module Companies
     end
       
     def create
+      if params[:shop][:image_ids]
+        params[:shop][:image_ids].each do |image_id|
+          images = @shop.images.find(image_id)
+          images.purge
+        end
+      end
+
       if @shop.update(image_params)
         redirect_to companies_shop_images_path, notice: "写真を投稿しました。"
       else

@@ -2,33 +2,35 @@
 
 <div class="row p-1">
   <div class="col-9">
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-      <!-- インジケータの設定 -->
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="スライド 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="スライド 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="スライド 3"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="スライド 4"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="スライド 5"></button>
-      </div>
-      <!-- スライドさせる画像の設定 -->
-      <div class="carousel-inner">
-        <% @shop.main_images.each_with_index do |image,idx| %>
-          <div class="carousel-item<%= idx == 1 ? " active" : "" %>">
-            <%= image_tag image, class: "d-block w-100 p-2", style: "height: 500px" %>
-          </div><!-- /.carousel-item -->
-        <% end %>
-      </div><!-- /.carousel-inner -->
-      <!-- スライドコントロールの設定 -->
-      <button type="button" class="carousel-control-prev" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">前へ</span>
-      </button>
-      <button type="button" class="carousel-control-next" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">次へ</span>
-      </button>
-    </div><!-- /.carousel -->
+    <% if @shop.main_images.attached? %>
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <!-- インジケータの設定 -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="スライド 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="スライド 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="スライド 3"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="スライド 4"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="スライド 5"></button>
+        </div>
+        <!-- スライドさせる画像の設定 -->
+        <div class="carousel-inner">
+          <% @shop.main_images.each_with_index do |image,idx| %>
+            <div class="carousel-item<%= idx == 1 ? " active" : "" %>">
+              <%= image_tag image, class: "d-block w-100 p-2", style: "height: 500px" %>
+            </div><!-- /.carousel-item -->
+          <% end %>
+        </div><!-- /.carousel-inner -->
+        <!-- スライドコントロールの設定 -->
+        <button type="button" class="carousel-control-prev" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">前へ</span>
+        </button>
+        <button type="button" class="carousel-control-next" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">次へ</span>
+        </button>
+      </div><!-- /.carousel -->
+    <% end %>
   
     <div class="border-bottom">
       <h3><%= @shop.catch_copy %></h3>
