@@ -1,6 +1,33 @@
 ---
 ja:
   activerecord:
+    model:
+      area: "都道府県"
+      category: "カテゴリー"
+      favorite: "お気に入り"
+      genre: "メニュージャンル"
+      menu: "メニュー"
+      shop: "お店"
+    attributes:
+      area:
+        name: "都道府県名"
+      category:
+        name: "カテゴリー名"
+      genre:
+        name: "メニュージャンル名"
+      menu:
+        name: "メニュー名"
+        description: "メニュー説明"
+      shop:
+        name: "店舗名"
+        city: "市町村区"
+        address: "番地・建物名"
+        catch_copy: "キャッチコピー"
+        description: "お店の説明"
+        telephone: "電話番号"
+        business_hours: "営業時間"
+        main_images: "メイン画像"
+        images: "お店写真"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

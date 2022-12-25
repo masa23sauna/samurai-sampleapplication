@@ -110,6 +110,9 @@
       </div>
     </div>
   </div>
+  <% if @shop.errors.include?(:main_images) %>
+    <p style="color: red;"><%= @shop.errors.full_messages_for(:main_images).first %>
+  <% end %>
 
   <div class="actions text-center">
     <%= form.submit "お店登録する", class: "btn btn-warning btn-lg" %>

@@ -18,6 +18,7 @@ class Shop < ApplicationRecord
   validates :category_id, presence: true
   validates :catch_copy, length: { maximum: 30 }
   validates :description, length: { maximum: 200 }
+  validate :main_images_length
   
   def self.search(keyword = nil, category_id = nil, area_id = nil)
     shops = Shop.order(created_at: :desc)
@@ -26,4 +27,14 @@ class Shop < ApplicationRecord
     shops = shops.where(area_id: area_id) if area_id.present?
     shops
   end
+  
+  private
+  
+    def main_images_length
+      if main_images.length > 5
+        main_images.purge
+        errors.add(:main_images, "は5枚以内にしてください")
+      end
+    end
+
 end
