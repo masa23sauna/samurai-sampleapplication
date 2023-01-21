@@ -56,3 +56,4 @@ production:
   database: meshilog_production
   username: meshilog
   password: <%= ENV["MESHILOG_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
