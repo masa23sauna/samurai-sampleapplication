@@ -32,6 +32,8 @@ gem "turbo-rails"
 gem "actionpack", ">= 7.0.4.1"
 gem "activerecord", ">= 7.0.4.1"
 gem "activesupport", ">= 7.0.4.1"
+gem 'fog-aws'
+gem "aws-sdk-s3", require: false 
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
