@@ -2,7 +2,7 @@
   <div>
     <h1><%= @shop.name %></h1>
     <div class="mt-5">
-      <a><i class="bi bi-bookmark-heart-fill" style="font-size: 1.75rem; color: #f08080;"></i><span class="ms-2">◎◎件</span></a>
+      <a><i class="bi bi-bookmark-heart-fill me-2" style="font-size: 1.75rem; color: #f08080;"></i><%= @shop.favorites.count %>件</a>
     </div>
   </div>
   <div class="align-self-end">
