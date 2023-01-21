@@ -28,7 +28,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
@@ -90,4 +90,24 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  
+  Rails.application.configure do
+    # default url
+    config.action_mailer.default_url_options = {
+      protocol: 'https',
+      host:ENV["CLOUD9_APP_ROOT_URL"]
+    }
+    # mail setting
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      port:                 587,
+      address:              'smtp.gmail.com',
+      domain:               'smtp.gmail.com',
+      user_name:            ENV['WELCOME_MAILER_ADDRESS'],
+      password:             ENV['WELCOME_MAILER_PASSWORD'],
+      authentication:       'login',
+      enable_starttls_auto: true
+    }
+  end
 end

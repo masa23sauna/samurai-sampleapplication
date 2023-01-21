@@ -50,6 +50,9 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: meshilog_production
   username: meshilog
   password: <%= ENV["MESHILOG_DATABASE_PASSWORD"] %>
